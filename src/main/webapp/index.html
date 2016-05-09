@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>登陆系统</title>
+<link rel="icon" href="favicon.ico">
+<link href="css/css.css" rel="stylesheet">
+<link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/form-elements.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+</head>
+<body style="background-image:url(image/backimg.jpg);">
+	<div class="container">
+		<div class="top-content">
+			<div class="inner-bg">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-8 col-sm-offset-2 text">
+							<h1>
+								<strong>欢迎使用</strong>
+							</h1>
+							<div class="description">
+								<p>您还没有登录</p>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-3 form-box">
+							<div class="form-top">
+								<div class="form-top-left">
+									<h3>登陆</h3>
+								</div>
+								<div class="form-top-right"></div>
+							</div>
+							<div class="form-bottom">
+								<form role="form" action="login" method="post"
+									class="login-form">
+									<div class="form-group">
+										<label class="sr-only" for="form-username">用户名</label> <input
+											name="username" placeholder="请输入用户名..."
+											class="form-username form-control input-error"
+											id="form-username" type="text">
+									</div>
+									<div class="form-group">
+										<label class="sr-only" for="form-password">密码</label> <input
+											name="password" placeholder="请输入密码..."
+											class="form-password form-control input-error"
+											id="form-password" type="password">
+									</div>
+									<button type="submit" class="btn">登陆</button>
+								</form>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
