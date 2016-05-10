@@ -1,6 +1,7 @@
 package com.giscafer.physicaltable.config;
 
 import com.giscafer.physicaltable.controller.CacheController;
+import com.giscafer.physicaltable.controller.ReportcardController;
 import com.giscafer.physicaltable.controller.UserController;
 import com.jfinal.config.Routes;
 
@@ -13,6 +14,7 @@ public class AdminRoutes extends Routes {
 	@Override
 	public void config() {
 		add("/user",UserController.class,"/");
+		add("/reportcard",ReportcardController.class,"/");
 		add("/cache",CacheController.class,"/");
 	}
 

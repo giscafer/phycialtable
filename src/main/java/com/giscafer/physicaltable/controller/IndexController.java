@@ -14,9 +14,9 @@ import org.slf4j.LoggerFactory;
 import com.giscafer.physicaltable.Constant.ConfigConstant;
 import com.giscafer.physicaltable.interceptor.LoginValidator;
 import com.giscafer.physicaltable.interceptor.TimeInterceptor;
-import com.giscafer.physicaltable.model.User;
-import com.giscafer.physicaltable.service.IUserService;
-import com.giscafer.physicaltable.service.impl.UserServiceImpl;
+import com.giscafer.physicaltable.model.Reportcard;
+import com.giscafer.physicaltable.service.IReportcardService;
+import com.giscafer.physicaltable.service.impl.ReportcardServiceImpl;
 import com.giscafer.physicaltable.util.BeanMapUtil;
 import com.giscafer.physicaltable.util.POIExcelUtil;
 import com.jfinal.aop.Before;
@@ -35,7 +35,7 @@ import com.jfinal.plugin.ehcache.CacheInterceptor;
 public class IndexController extends Controller {
 	private static Logger logIndex = LoggerFactory
 			.getLogger(IndexController.class);
-	private static IUserService userservice=Enhancer.enhance(UserServiceImpl.class);
+	private static IReportcardService userservice=Enhancer.enhance(ReportcardServiceImpl.class);
 
 	/*
 	 * jfinal默认访问不到的路径都会访问这个index方法来处理，如果想让找不到的路径引发404，可以加NoUrlPara这个拦截器
@@ -58,7 +58,7 @@ public class IndexController extends Controller {
 			getSession().setAttribute(ConfigConstant.USERNAME, cu);
 			logIndex.info("登陆信息:"+ToStringBuilder.reflectionToString(this));
 			setCookie(ConfigConstant.USERNAME, username, 86400);//1天免登陆
-			redirect("/manage.html");
+			redirect("/reportcard.html");
 		}else{
 			logIndex.info("登陆失败!");
 			redirect("/index.html");
@@ -86,7 +86,7 @@ public class IndexController extends Controller {
 	
 	public void export(){
 		SimpleDateFormat format=new SimpleDateFormat("yyyyMMddHHmmss");
-		List<User> users=User.dao.find("select * from "+ConfigConstant.USERTABLE+" limit 50");
+		List<Reportcard> users=Reportcard.dao.find("select * from "+ConfigConstant.REPORTCARDTABLE+" limit 150");
 		String projectPath=getRequest().getServletContext().getRealPath("export");
 		int userCount=users.size();
 		List<Map<String, Object>> mps=new ArrayList<Map<String,Object>>(users.size());
@@ -94,7 +94,7 @@ public class IndexController extends Controller {
 			Map<String, Object> m=BeanMapUtil.transBean2Map(users.get(i));
 			mps.add(m);
 		}
-		logIndex.info("aaa:"+mps.toString());
+		logIndex.info("report:"+mps.toString());
 		List<String> titles=new ArrayList<String>(mps.get(0).size()-1);
 		titles.add("adddate");
 		titles.add("age");
