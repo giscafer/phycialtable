@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="phycialtable"
+  name="physicaltable"
   id="myeclipse.1462803618550"
-  context-root="/phycialtable"
+  context-root="/physicaltable"
   j2ee-spec="6.0"
-  archive="phycialtable.war">
+  archive="physicaltable.war">
   <attributes>
     <attribute name="webrootdir" value="src/main/webapp" />
   </attributes>

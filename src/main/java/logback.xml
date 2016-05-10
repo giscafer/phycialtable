@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <configuration>
-	<property name="logname" value="phycialtable" />
-	<property name="logbase" value="${catalina.base}/logs/phycialtable/" />
+	<property name="logname" value="physicaltable" />
+	<property name="logbase" value="${catalina.base}/logs/physicaltable/" />
 	<jmxConfigurator/>
 	<appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder charset="utf-8">

@@ -1,4 +1,4 @@
-# phycialtable
+# physicaltable
 给同学弄的一个关于体育成绩登记的简单站点
 为了速度搭建，借用@netbuffer的[jfinal-bootstrap-table](https://github.com/netbuffer/jfinal-bootstrap-table)demo进行修改
 
