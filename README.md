@@ -4,7 +4,7 @@
 
 ## ScreenShot
 
-	![登录](https://raw.githubusercontent.com/giscafer/physicaltable/master/src/main/webapp/image/screenshot1.png)
+![登录](https://raw.githubusercontent.com/giscafer/physicaltable/master/src/main/webapp/image/screenshot1.png)
 
 ## Usage
 
