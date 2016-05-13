@@ -10,11 +10,4 @@
 
 maven项目正常使用方式
 
-## License
-![](https://img.shields.io/badge/license-MIT-blue.svg)
 
----
-
-> [giscafer.com](http://giscafer.com) &nbsp;&middot;&nbsp;
-> GitHub [@giscafer](https://github.com/giscafer) &nbsp;&middot;&nbsp;
-> Weibo [@Nickbing Lao](https://weibo.com/laohoubin)
