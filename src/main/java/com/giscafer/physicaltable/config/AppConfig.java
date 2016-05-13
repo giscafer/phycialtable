@@ -54,9 +54,8 @@ public class AppConfig extends JFinalConfig {
 		/**
 		 * 
 		 */
-		me.setBaseUploadPath("upload");
-		me.setBaseDownloadPath("export");
-		me.setViewType(ViewType.OTHER);
+		/*me.setBaseUploadPath("upload");
+		me.setBaseDownloadPath("export");*/
 		me.setError403View("/403.html");
 		me.setError404View("/404.html");
 		me.setError500View("/500.html");

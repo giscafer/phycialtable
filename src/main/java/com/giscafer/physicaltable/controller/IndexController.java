@@ -58,7 +58,7 @@ public class IndexController extends Controller {
 			getSession().setAttribute(ConfigConstant.USERNAME, cu);
 			logIndex.info("登陆信息:"+ToStringBuilder.reflectionToString(this));
 			setCookie(ConfigConstant.USERNAME, username, 86400);//1天免登陆
-			redirect("/reportcard.html");
+			render("/reportcard.html");
 		}else{
 			logIndex.info("登陆失败!");
 			redirect("/index.html");
