@@ -26,7 +26,7 @@ public class ReportcardController extends Controller {
 			.getLogger(ReportcardController.class);
 
 	public void index() {
-		render("index.html");
+		render("main.html");
 	}
 	
 	/**
@@ -48,5 +48,8 @@ public class ReportcardController extends Controller {
 		User.dao.deleteById(getPara("id"));
 		setAttr("status", "success");
 		renderJson();
+	}
+	public void add(){
+		render("addForm.html");
 	}
 }

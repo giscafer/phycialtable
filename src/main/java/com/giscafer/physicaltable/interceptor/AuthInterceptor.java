@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import com.giscafer.physicaltable.Constant.ConfigConstant;
 import com.jfinal.aop.Interceptor;
 import com.jfinal.aop.Invocation;
+import com.jfinal.render.RedirectRender;
 
 /**
  * 认证拦截器
@@ -18,6 +19,9 @@ public class AuthInterceptor implements Interceptor {
 	public void intercept(Invocation inv) {
 		authlogger.info("Before method invoking");
 		Object login=inv.getController().getSession().getAttribute(ConfigConstant.ISLOGIN);
+		/*if((null!=login && Boolean.parseBoolean(login.toString()))){//已经登陆
+			render("login.html");
+		}*/
 		authlogger.info("invoking:"+inv.getControllerKey()+"--"+inv.getMethodName()+"--"+inv.getViewPath()+"--"+ToStringBuilder.reflectionToString(inv.getArgs()));
 		//未登录跳转
 		if(inv.getMethodName().equals("login")||inv.getMethodName().equals("captcha")||inv.getControllerKey().contains("register")

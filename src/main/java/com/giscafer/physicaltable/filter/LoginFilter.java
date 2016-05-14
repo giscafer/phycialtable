@@ -62,13 +62,12 @@ public class LoginFilter implements Filter {
 		}
 		
 		Cookie[] cookies=httpServletRequest.getCookies();
+		
 		System.out.println("path:"+uri);
 		Object islogin=httpServletRequest.getSession().getAttribute(ConfigConstant.ISLOGIN);
-		if ( islogin!= null&&Boolean.parseBoolean(islogin.toString())) {
-			System.out.println("p1");
+		if ( islogin!= null&&Boolean.parseBoolean(islogin.toString())) {//已登录
 			filterChain.doFilter(httpServletRequest, httpServletResponse);
-		} else if(cookies!=null){
-			System.out.println("p2");
+		} else if(cookies!=null){//未登录，查询cookie
 			for(Cookie cookie:cookies){
 //				System.out.println("cookiename:"+cookie.getName());
 				if(cookie.getName().equals(ConfigConstant.USERNAME)){
@@ -76,19 +75,19 @@ public class LoginFilter implements Filter {
 					httpServletRequest.getSession().setAttribute(ConfigConstant.ISLOGIN, true);
 					httpServletRequest.getSession().setAttribute(ConfigConstant.USERNAME, cookie.getValue());
 					if(uri.endsWith(ConfigConstant.PROJECTNAME+"/")){
-						httpServletResponse.sendRedirect(httpServletRequest
-								.getContextPath() + "/manage.html");
+						httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/reportcard");
 					}else{
 						filterChain.doFilter(httpServletRequest, httpServletResponse);
 					}
 					return ;
 				}
 			}
-			httpServletResponse.sendRedirect(httpServletRequest
-					.getContextPath() + "/index.html");
+			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
+		}else{
+			httpServletResponse.sendRedirect(httpServletRequest.getContextPath() + "/login");
 		}
 	}
-
+	
 	@Override
 	public void destroy() {
 

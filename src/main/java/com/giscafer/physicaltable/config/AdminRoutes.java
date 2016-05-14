@@ -7,14 +7,13 @@ import com.jfinal.config.Routes;
 
 /**
  * 后端路由规则
- * @author champ
+ * @author giscafer
  */
 public class AdminRoutes extends Routes {
 
 	@Override
 	public void config() {
-		add("/user",UserController.class,"/");
-		add("/reportcard",ReportcardController.class,"/");
+		add("/reportcard",ReportcardController.class,"/reportcard");
 		add("/cache",CacheController.class,"/");
 	}
 

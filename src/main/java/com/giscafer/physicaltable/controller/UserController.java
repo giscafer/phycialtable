@@ -26,7 +26,7 @@ public class UserController extends Controller {
 			.getLogger(UserController.class);
 
 	public void index() {
-		render("index.html");
+		render("login.html");
 	}
 	
 	/**

@@ -1,26 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>成绩单管理页</title>
-<link rel="icon" href="favicon.ico">
-<link
-	href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css"
-	rel="stylesheet">
-<link
-	href="//cdn.bootcss.com/bootstrap-table/1.10.0/bootstrap-table.min.css"
-	rel="stylesheet">
-<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script
-	src="//cdn.bootcss.com/bootstrap-table/1.10.0/bootstrap-table.min.js"></script>
-<script
-	src="//cdn.bootcss.com/bootstrap-table/1.10.0/extensions/export/bootstrap-table-export.min.js"></script>
-<script
-	src="//cdn.bootcss.com/bootstrap-table/1.10.0/locale/bootstrap-table-zh-CN.min.js"></script>
-<script
-	src="//rawgit.com/hhurz/tableExport.jquery.plugin/master/tableExport.js"></script>
-</head>
+<meta charset="utf-8">
+<#include "../common/head.html"/>
 <body>
 	<nav class="navbar navbar-inverse" role="navigation">
 		<div class="container-fluid">
@@ -48,7 +29,7 @@
 						今日共新增&nbsp;<span class="badge" id="xinzeng"
 							style="cursor:pointer;" onclick="checkToday();">0</span>&nbsp;条数据
 					</p>
-					<li><a href="#" id="sys_exit" onclick="sys_Exit();"><span
+					<li><a href="#" id="sys_exit" onclick="loginOut();"><span
 							class="glyphicon glyphicon-off"></span>退出系统</a>
 					</li>
 				</ul>
@@ -61,12 +42,12 @@
 			<!-- <button type="button" class="btn btn-default" onclick="exporyAll();">
 				<span class="glyphicon glyphicon-arrow-down"></span> 导出历史数据到excel
 			</button> -->
-			<button id="remove" class="btn btn-info">
+			<a id="remove" class="btn btn-info" href="add">
 				<i class="glyphicon glyphicon-ok"></i> 新增
-			</button>
+			</a>
 
 		</div>
-		<table id="dtb" data-toggle="table" data-url="reportcard/reportlist"
+		<table id="dtb" data-toggle="table" data-url="reportlist"
 			data-toolbar="#toolbar" class="table table-hover"
 			data-show-columns="false" data-search="true" data-show-refresh="true"
 			data-show-toggle="false" data-show-export="true"
@@ -121,9 +102,6 @@
 				</tr>
 			</thead>
 		</table>
-		<#include "reportcard/addForm.html"/> <#include
-		"reportcard/editForm.html"/>
-
 	</div>
 </body>
 <script type="text/javascript">
@@ -212,9 +190,9 @@
     	   refreshTable();
        }
        
-       function sys_Exit(){
+       function loginOut(){
     	   if(confirm("确定退出系统吗")){
-    		   window.location.href="exit";
+    		   window.location.href="../exit";
     	   }
        }
        function exporyToday(){

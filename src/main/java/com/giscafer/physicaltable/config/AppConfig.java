@@ -41,7 +41,7 @@ public class AppConfig extends JFinalConfig {
 	 * 
 	 */
 	public void beforeJFinalStop() {
-		System.out.println("jfinal鍋滄!");
+		System.out.println("jfinal停止!");
 	};
 
 	/**
@@ -50,7 +50,7 @@ public class AppConfig extends JFinalConfig {
 	public void configConstant(Constants me) {
 		Prop p = PropKit.use("config.txt");
 		me.setDevMode(p.getBoolean("devMode"));
-		me.setEncoding("utf8");
+		me.setEncoding("utf-8");
 		/**
 		 * 
 		 */

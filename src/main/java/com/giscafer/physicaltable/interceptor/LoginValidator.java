@@ -18,6 +18,6 @@ public class LoginValidator extends Validator {
 	protected void handleError(Controller c) {
 		loginVal.info("输入有误");
 		c.keepPara("username");
-		c.render("index.html");
+		c.render("login.html");
 	}
 }
