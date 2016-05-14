@@ -5,6 +5,7 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.giscafer.physicaltable.Constant.ConfigConstant;
 import com.giscafer.physicaltable.interceptor.TimeInterceptor;
 import com.giscafer.physicaltable.model.User;
 import com.giscafer.physicaltable.service.IReportcardService;
@@ -26,6 +27,8 @@ public class ReportcardController extends Controller {
 			.getLogger(ReportcardController.class);
 
 	public void index() {
+		Object username=getSession().getAttribute(ConfigConstant.USERNAME);
+		setAttr("username",username);
 		render("main.html");
 	}
 	
