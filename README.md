@@ -2,9 +2,9 @@
 给别人弄的一个关于体育成绩登记的简单站点
 为了速度搭建，借用@netbuffer的[jfinal-bootstrap-table](https://github.com/netbuffer/jfinal-bootstrap-table)demo进行修改
 
-## ScreenShot
+## Screenshot
 
-![登录](https://raw.githubusercontent.com/giscafer/physicaltable/master/src/main/webapp/image/screenshot1.png)
+![登录](https://raw.githubusercontent.com/giscafer/physicaltable/master/src/main/webapp/public/images/screenshot1.png)
 
 ## Usage
 
