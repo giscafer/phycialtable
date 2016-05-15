@@ -1,3 +1,7 @@
+<!-- 
+date:2016年5月15日19:06:11
+author:giscafer
+ -->
 <!DOCTYPE html>
 <html>
 <meta charset="utf-8">
@@ -26,8 +30,7 @@
 							id="login_username">${username!''}</span>
 					</p>
 					<p class="navbar-text">
-						今日共新增&nbsp;<span class="badge" id="xinzeng"
-							style="cursor:pointer;" onclick="checkToday();">0</span>&nbsp;条数据
+						今日共新增&nbsp;<span class="badge" id="xinzeng">0</span>&nbsp;条数据
 					</p>
 					<li><a href="#" id="sys_exit" onclick="loginOut();"><span
 							class="glyphicon glyphicon-off"></span>退出系统</a>
@@ -42,17 +45,16 @@
 			<!-- <button type="button" class="btn btn-default" onclick="exporyAll();">
 				<span class="glyphicon glyphicon-arrow-down"></span> 导出历史数据到excel
 			</button> -->
-			<a id="remove" class="btn btn-info" href="add">
+			<a id="remove" class="btn btn-info" href="addForm">
 				<i class="glyphicon glyphicon-ok"></i> 新增
 			</a>
-
 		</div>
 		<table id="dtb" data-toggle="table" data-url="reportlist"
 			data-toolbar="#toolbar" class="table table-hover"
-			data-show-columns="false" data-search="true" data-show-refresh="true"
+			data-show-columns="false" data-show-refresh="true"
 			data-show-toggle="false" data-show-export="true"
-			data-export-types="['excel']"
-			data-height="450" data-side-pagination="server"
+			data-export-types="['excel']"  data-search="true"
+			data-height="650" data-side-pagination="server"
 			data-pagination="true" data-page-list="[5, 10, 20, 50, 100, 200]"
 			data-query-params="makeparmter">
 			<thead>
@@ -104,106 +106,5 @@
 		</table>
 	</div>
 </body>
-<script type="text/javascript">
-	    $(function(){
-	    	$.getJSON('newdata',function(data){
-	    		$("#xinzeng").text(data.newcount);
-	    		if(Number(data.newcount)!=0){
-	    			$("#xinzeng").tooltip({"title":"今日新增数据，点击查看","placement":"bottom"});
-	    			$("#xinzeng").mouseover();
-	    		}
-	    		$("#login_username").text(data.username);
-	    		
-	    	});
-	    });
-    
-    	function operateFormatter(value, row, index) {
-	        return [
-	            '<a class="edit ml10" style="color:black;" href="javascript:void(0)" title="编辑">',
-	                '<span class="glyphicon glyphicon-edit"></span>',
-	            '</a>&emsp;',
-	            '<a class="remove ml10" style="color:black;" href="javascript:void(0)" title="删除">',
-	                '<i class="glyphicon glyphicon-remove"></i>',
-	            '</a>'
-	        ].join('');
-	    }
-    	
-    	function hideIdFormatter(value, row, index) {
-	        return "<input type='hidden' value="+value+" name='id' />";
-	    }
-    	
-	    window.operateEvents = {
-	        'click .like': function (e, value, row, index) {
-	            console.log(value, row, index);
-	        },
-	        'click .edit': function (e, value, row, index) {
-	        	$("#waitph").val($("[data-index="+index+"]").find('td').eq(3).text());
-	        	$("#edituc").modal("show");
-	            //console.log(value, row, index);
-	        },
-	        'click .remove': function (e, value, row, index) {
-	            var delid=$("[data-index="+index+"]").find('td').eq(0).children().first().val();
-	            if(confirm("确定删除该条记录吗？"+delid)){
-	            	$.getJSON('user/delete',{"id":delid},function(data){
-	            		$("#dtb").bootstrapTable('refresh');
-		            });	
-	            }
-	            console.log(value, row, index);
-	        }
-	    };
-	    
-	    function refreshTable(){
-	    	$("table").bootstrapTable('refresh', {
-                url:$("table").attr('data-url')
-            });
-	    }
-	    
-       function makeparmter(params) {
-    	   params.queryby=$("#queryby").val();
-    	   var ret='';
-    	   for(var i in params){
-    	       ret+=i+':'+params[i];
-    	   }
-    	   //alert(ret);
-    	   return params;
-       }
-       
-       function saveUcode(){
-    	   //alert($("#waiteduc").val());
-    	   //alert($("#waitph").val());
-    	   $.post('user/edit',{"phone":$("#waitph").val(),"uc":$("#waiteduc").val()},function(){
-    		   //alert('保存成功!');
-    		   $("#edituc").modal('hide');
-    		   $("#waiteduc").val('');
-        	   $("#waitph").val('');
-        	   refreshTable();
-    	   });
-       }
-       
-       function checkToday(){
-    	   $("#queryby").val('0');
-    	   refreshTable();
-       }
-       
-       function checkAll(){
-    	   $("#queryby").val('1');
-    	   refreshTable();
-       }
-       
-       function loginOut(){
-    	   if(confirm("确定退出系统吗")){
-    		   window.location.href="../exit";
-    	   }
-       }
-       function exporyToday(){
-    	   if(confirm("确定导出当天记录吗？")){
-    		   window.location.href="user/export";
-    	   }
-       }
-       function exporyAll(){
-    	   if(confirm("确定导出所有记录吗？")){
-    		   window.location.href="export";
-    	   }
-       }
-    </script>
+<<script src="${baseRootPath}/public/app/main.js"></script>
 </html>

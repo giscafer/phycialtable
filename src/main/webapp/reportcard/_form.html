@@ -1,0 +1,144 @@
+<meta charset="utf-8">
+<form class="form-horizontal" role="form" id="reportcardForm" method="POST">
+		<input class="form-control" id="id" type="text" value="${(reportcard.id)!''}"
+				name="reportcard.id" style="display:none">
+	<div class="form-inline">
+		<div class="col-sm-4">
+			<label class="col-sm-6 control-label">编号:</label>	
+			 <#if reportcard??>
+			 	<input class="form-control" id="studentid" type="text" value="${(reportcard.studentid)!''}"
+				name="reportcard.studentid" placeholder="请输入编号..." readonly>
+			 <#else>
+			 	<input class="form-control" id="studentid" type="text" value="${(reportcard.studentid)!''}"
+				name="reportcard.studentid" placeholder="请输入编号...">
+			 </#if>
+			
+		</div>
+		<div class="col-sm-2">
+			<label class="control-label">性别:</label> <select
+				name="reportcard.sex" id="sex" class="form-control">
+				<#if reportcard?? && reportcard.sex?? && reportcard.sex == "女">
+					<option value="男">男</option>
+					<option selected="true" value="女">女</option>
+				<#elseif reportcard?? && reportcard.sex?? && reportcard.sex == "男">
+					<option  selected="true" value="男">男</option>
+					<option  value="女">女</option>
+				<#else>
+					<option   selected="true"></option>
+					<option value="男">男</option>
+					<option  value="女">女</option>
+				</#if>
+				
+			</select>
+		</div>
+		<div class="col-sm-6">
+			<label class="control-label">年龄:</label> <input name="reportcard.age"  value="${(reportcard.age)!''}"
+				class="form-control" id="age" type="text" placeholder="请输入年龄..">
+		</div>
+	</div>
+	<div class="form-group"></div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" style="background:#F8F8F8">项目</label>
+		<div class="col-sm-4" style="background:#F8F8F8"> 
+			<label class="control-label">成绩</label>
+		</div>
+		<div class="col-sm-4" style="background:#F8F8F8">
+			<label class="control-label">分数</label>
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label">全场3/4场加速跑（s）:</label>
+		<div class="col-sm-4">
+			<input class="form-control" id="qcjsp_grade" type="text"  value="${(reportcard.qcjsp_grade)!''}"
+				name="reportcard.qcjsp_grade" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="qcjsp_score" type="text"  value="${(reportcard.qcjsp_score)!''}"
+				name="reportcard.qcjsp_score" placeholder="请输入分数...">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="inputPassword" class="col-sm-2 control-label">
+			15m*17折返跑（s）: </label>
+		<div class="col-sm-4">
+			<input class="form-control" id="zfp_grade"
+				name="reportcard.zfp_grade" type="text"  value="${(reportcard.zfp_grade)!''}" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="zfp_score"
+				name="reportcard.zfp_score" type="text"  value="${(reportcard.zfp_score)!''}" placeholder="请输入分数...">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="disabledTextInput" class="col-sm-2 control-label">
+			立定跳远（m）: </label>
+		<div class="col-sm-4">
+			<input class="form-control" id="ldty_grade" type="text"  value="${(reportcard.ldty_grade)!''}"
+				name="reportcard.ldty_grade" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="ldty_score" type="text"  value="${(reportcard.ldty_score)!''}"
+				name="reportcard.ldty_score" placeholder="请输入分数...">
+		</div>
+	</div>
+	<div class="form-group">
+		<label for="disabledSelect" class="col-sm-2 control-label">
+			1min 仰卧起坐（次）: </label>
+		<div class="col-sm-4">
+			<input class="form-control" id="ywqz_grade" type="text"  value="${(reportcard.ywqz_grade)!''}"
+				name="reportcard.ywqz_grade" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="ywqz_score" type="text"  value="${(reportcard.ywqz_score)!''}"
+				name="reportcard.ywqz_score" placeholder="请输入分数...">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="inputSuccess">
+			助跑单脚跳摸高（m）: </label>
+		<div class="col-sm-4">
+			<input class="form-control" id="zpdjtmg_grade" type="text"  value="${(reportcard.zpdjtmg_grade)!''}"
+				name="reportcard.zpdjtmg_grade" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="zpdjtmg_score" type="text"  value="${(reportcard.zpdjtmg_score)!''}"
+				name="reportcard.zpdjtmg_score" placeholder="请输入分数...">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="syts_grade">
+			双摇跳绳（次）: </label>
+		<div class="col-sm-4">
+			<input class="form-control" id="syts_grade" type="text"  value="${(reportcard.syts_grade)!''}"
+				name="reportcard.syts_grade" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="syts_score" type="text"  value="${(reportcard.syts_score)!''}"
+				name="reportcard.syts_score" placeholder="请输入分数...">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="tqq_grade">
+			体前屈（cm）: </label>
+		<div class="col-sm-4">
+			<input class="form-control" id="tqq_grade" type="text"  value="${(reportcard.tqq_grade)!''}"
+				name="reportcard.tqq_grade" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="tqq_score" type="text"  value="${(reportcard.tqq_score)!''}"
+				name="reportcard.tqq_score" placeholder="请输入分数...">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="col-sm-2 control-label" for="tqsstscq_grade">
+			跳起空中转体双手头上传球（m）: </label>
+		<div class="col-sm-4">
+			<input class="form-control" id="tqsstscq_grade" type="text"  value="${(reportcard.tqsstscq_grade)!''}"
+				name="reportcard.tqsstscq_grade" placeholder="请输入成绩...">
+		</div>
+		<div class="col-sm-4">
+			<input class="form-control" id="tqsstscq_score" type="text"  value="${(reportcard.tqsstscq_score)!''}"
+				name="reportcard.tqsstscq_score" placeholder="请输入分数...">
+		</div>
+	</div>
+</form>

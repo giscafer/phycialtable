@@ -30,6 +30,6 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public int getNewData() {
-		return Db.queryLong("select count(id) from " + ConfigConstant.USERTABLE+" where DATE_FORMAT(NOW(),'%Y-%m-%d')=FROM_UNIXTIME(adddate,'%Y-%m-%d')").intValue();
+		return Db.queryLong("select count(id) from " + ConfigConstant.USERTABLE+" where DATE_FORMAT(NOW(),'%Y-%m-%d')=DATE_FORMAT(createtime,'%Y-%m-%d')").intValue();
 	}
 }

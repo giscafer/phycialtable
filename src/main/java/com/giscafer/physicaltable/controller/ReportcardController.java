@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 
 import com.giscafer.physicaltable.Constant.ConfigConstant;
 import com.giscafer.physicaltable.interceptor.TimeInterceptor;
+import com.giscafer.physicaltable.model.Reportcard;
 import com.giscafer.physicaltable.model.User;
+import com.giscafer.physicaltable.model.base.BaseReportcard;
 import com.giscafer.physicaltable.service.IReportcardService;
 import com.giscafer.physicaltable.service.impl.ReportcardServiceImpl;
 import com.jfinal.aop.Before;
@@ -35,11 +37,12 @@ public class ReportcardController extends Controller {
 	/**
 	 * 开启缓存
 	 */
-	@Before({CacheInterceptor.class})
+//	@Before({CacheInterceptor.class})
 	public void reportlist() {
 		int limit=getParaToInt("limit");
 		int offset=getParaToInt("offset");
-		Map<String, Object> data=reportservice.getReportList(offset, limit);
+		String studentId=getPara("search");
+		Map<String, Object> data=reportservice.getReportList(offset, limit,studentId);
 		if(data!=null && data.size()>0){
 			renderJson(data);
 		}else{
@@ -48,11 +51,33 @@ public class ReportcardController extends Controller {
 		
 	}
 	public void delete(){
-		User.dao.deleteById(getPara("id"));
+		boolean result=Reportcard.dao.deleteById(getPara("id"));
 		setAttr("status", "success");
 		renderJson();
 	}
-	public void add(){
+	public void addForm(){
 		render("addForm.html");
+	}
+	public void save(){
+		Reportcard report=getModel(Reportcard.class);
+		if(report.getId()!=null){
+			report.update();
+		}else{
+			report.save();
+		}
+		redirect("/reportcard");
+	}
+	public void setEditData(){
+		getSession().setAttribute("reportcard", Reportcard.dao.findById(getPara("id")));
+		renderJson();
+	}
+	public void editForm(){
+		setAttr("reportcard",getSession().getAttribute("reportcard"));
+		System.out.println(getAttr("reportcard"));
+		render("editForm.html");
+	}
+	public void newdata(){
+		int count=reportservice.getNewData();
+		renderJson(count);
 	}
 }
